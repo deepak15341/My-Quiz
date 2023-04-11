@@ -27,7 +27,7 @@ private CardStackView myCardStackView;
         setContentView(R.layout.activity_main);
         myCardStackView = findViewById(R.id.myCardStackView);
         myCardStackView.setLayoutManager(new CardStackLayoutManager(this));
-       // myCardStackView.setAdapter(new CardStackAdapter());
+        myCardStackView.setAdapter(new CardStackAdapter());
         requestQueue =VolleySingleton.getInstance().getRequestQueue();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, URL, null, new Response.Listener<JSONObject>() {
             @Override
