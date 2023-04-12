@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.deepak15341.myquiz.Model.QuizQuestion;
 import com.deepak15341.myquiz.R;
 import com.deepak15341.myquiz.View.RandomViewHolder;
 
@@ -16,11 +17,11 @@ import java.util.List;
 
 public class CardStackAdapter extends RecyclerView.Adapter<RandomViewHolder> {
     private Context mContext;
-    private List<String> mRandomList;
+    private List<QuizQuestion> mRandomQuestions;
     private LayoutInflater mLayoutInflater;
-    public  CardStackAdapter(Context context,List<String> randomList){
+    public  CardStackAdapter(Context context,List<QuizQuestion> randomQuestions){
         mContext = context;
-        mRandomList = randomList;
+        mRandomQuestions = randomQuestions;
         mLayoutInflater = LayoutInflater.from(context);
     }
 
@@ -34,7 +35,7 @@ public class CardStackAdapter extends RecyclerView.Adapter<RandomViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull RandomViewHolder holder, int position) {
 
-        holder.getTextViewQuestion().setText(mRandomList.get(position));
+        holder.getTextViewQuestion().setText(mRandomQuestions.get(position).getQuestionText());
         holder.getTrueImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,6 +53,6 @@ public class CardStackAdapter extends RecyclerView.Adapter<RandomViewHolder> {
 
     @Override
     public int getItemCount() {
-        return mRandomList.size();
+        return mRandomQuestions.size();
     }
 }
