@@ -17,6 +17,8 @@ import com.yuyakaido.android.cardstackview.CardStackView;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 RequestQueue requestQueue;
 String URL = "https://opentdb.com/api.php?amount=10&category=9&type=boolean";
@@ -27,7 +29,14 @@ private CardStackView myCardStackView;
         setContentView(R.layout.activity_main);
         myCardStackView = findViewById(R.id.myCardStackView);
         myCardStackView.setLayoutManager(new CardStackLayoutManager(this));
-        myCardStackView.setAdapter(new CardStackAdapter());
+
+        ArrayList<String> testRandom = new ArrayList<>();
+                testRandom.add("Tree");
+        testRandom.add("goat");
+        testRandom.add("dog");
+        testRandom.add("Assist");
+        testRandom.add("Excertion");
+        myCardStackView.setAdapter(new CardStackAdapter(MainActivity.this,testRandom));
         requestQueue =VolleySingleton.getInstance().getRequestQueue();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, URL, null, new Response.Listener<JSONObject>() {
             @Override
