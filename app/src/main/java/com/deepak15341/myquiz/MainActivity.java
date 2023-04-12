@@ -25,19 +25,17 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
 
-private CardStackView myCardStackView;
 private QuizManager mQuizManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mQuizManager = new QuizManager();
-        myCardStackView = findViewById(R.id.myCardStackView);
-        myCardStackView.setLayoutManager(new CardStackLayoutManager(this));
+        mQuizManager = new QuizManager(MainActivity.this);
+        mQuizManager.getQuizQuestions(this);
 
-        List<QuizQuestion> myQuizQuestions = mQuizManager.getQuizQuestions();
 
-        myCardStackView.setAdapter(new CardStackAdapter(MainActivity.this,myQuizQuestions));
+
+
 
 
     }
