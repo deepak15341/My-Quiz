@@ -42,6 +42,9 @@ public class QuizManager {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, URL, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+
+                Log.i("responce", response+"");
+
                 try {
                     JSONArray results = response.getJSONArray("results");
                     for (int index = 0; index <results.length() ; index++) {

@@ -39,13 +39,24 @@ public class CardStackAdapter extends RecyclerView.Adapter<RandomViewHolder> {
         holder.getTrueImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext, "True is tapped", Toast.LENGTH_SHORT).show();
+
+                if (mRandomQuestions.get(position).isTrueAnswer()){
+                    Toast.makeText(mContext, "YOU HAVE CHOOSEN THE RIGHT ANSWER!", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(mContext, "SORRY TRY AGAIN!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         holder.getFalseImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext, "False is tapped", Toast.LENGTH_SHORT).show();
+                if (mRandomQuestions.get(position).isTrueAnswer()){
+                    Toast.makeText(mContext, "YOU HAVE CHOOSEN THE WRONG ANSWER! TRY AGAIN!", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(mContext, "YOU HAVE CHOOSEN THE RIGHT ANSWER!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
